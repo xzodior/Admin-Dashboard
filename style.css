@@ -1,5 +1,5 @@
 :root {
-    --bg-color-blue: rgb(3, 133, 255); 
+    --bg-color: #e11d48; 
 }
 
 * {
@@ -17,7 +17,8 @@
 }
 
 #header {
-    background-color: white;
+    background-color: black;
+    color: white;
     grid-area: 1 / 2 / 1 / 6;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -40,10 +41,11 @@
     width: 40vw;
     height: 4vh;
     border-radius: 30px;
-    background-color: rgb(195, 195, 195);
-    border: none;
+    background-color: black;
     padding-left: 2vw;
-    color: white;
+    color: var(--bg-color);
+    border: 2px solid var(--bg-color);
+    background-color: white;
 }
 
 .top-right {
@@ -53,9 +55,23 @@
 }
 
 .bottom-left {
+    grid-area: 2 / 1 / 2 / 3;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+}
+
+.bottom-left > img {
     align-self: center;
-    justify-self: end;
-    grid-area: 2 / 1 / 2 / 2;
+    justify-self: center;
+    margin: 0;
+    padding: 0;
+    width: 5rem;
+    height: 4rem;
+}
+
+.bottom-left > .greet {
+    grid-column: 2;
+    align-self: center;
 }
 
 .bottom-right {
@@ -68,7 +84,7 @@
 }
 
 .bottom-right > button {
-    background-color: var(--bg-color-blue);
+    background-color: var(--bg-color);
     padding: 1rem 1.5rem;
     border-radius: 30px;
     border: none;
@@ -77,8 +93,14 @@
     font-size: 1rem;
 }
 
+.bottom-right > button:hover {
+    color: var(--bg-color);
+    background-color: white;
+    transition: 0.3s;
+}
+
 #sidebar {
-    background-color: var(--bg-color-blue);
+    background-color: var(--bg-color);
     color: white;
     grid-area: 1 / 1 / 6 / 1;
 }
@@ -86,6 +108,7 @@
 #sidebar > h1 {
     margin-top: 3vh;
     font-size: clamp(1rem, 2.5vw, 2rem); 
+    font-weight: 800;
 }
 
 #sidebar > h1 > i {
@@ -95,13 +118,22 @@
 #sidebar > ul {
     list-style-type: none;
     padding-top: 6vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 #sidebar > ul > li {
-    padding-bottom: 3vh;
+    padding: 0.5rem 0;
     font-size: 1.25rem;
     cursor: pointer;
-    font-size: clamp(0.75rem, 1.5vw, 1.25rem)
+    font-size: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+#sidebar > ul > li:hover {
+    color: var(--bg-color);
+    background-color: white;
+    transition: 0.3s;
 }
 
 #sidebar > ul > li > i{
@@ -109,12 +141,12 @@
 }
 
 #content {
-    background-color: rgb(226, 226, 226);
+    background-color: rgba(0, 0, 0, 0.881);
     grid-row: 2 / span 5;
     grid-column: 2 / span 5;
     display: grid;
     grid-template-columns: repeat(2, 1fr) 0.75fr;
-    grid-template-rows: 0.5fr repeat(3, 1fr) 0.5fr;
+    grid-template-rows: 0.5fr repeat(3, 2fr) 0.5fr;
     padding-left: 1vw;
     gap: 20px;
     padding-right: 1vw;
@@ -122,6 +154,7 @@
 
 #content > h3{
     align-self: flex-end;
+    color: white;
 }
 
 #content > h3:nth-child(4) {
@@ -137,12 +170,17 @@
 }
 
 [class^="project"] {            /* Ensures every class with the name'project' will have these styles */
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    padding: 2vw;
-    box-shadow: -5px 0px 0px 0px orange;
+    padding: 3vh 2vw 0 2vw;
+    box-shadow: -5px 0px 0px 0px var(--bg-color);
+}
+
+[class^="project"] > ul > li{
+    cursor: pointer;
 }
 
 .project-1 {
@@ -178,7 +216,8 @@
 }
 
 .announcements {
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 8px;
     grid-row: 1 /  span 1 ;
     grid-column: 3 /  3;
@@ -186,23 +225,27 @@
     overflow: auto;
     text-align: start;
     font-size: 0.75rem;
+    box-shadow: 0px -5px 0px 0px var(--bg-color);
 }
 
 hr {
     margin: 0.5rem 0rem;
 }
 
-#right-side > h3:nth-child(2) {
+#right-side > h3:nth-child(2) {         /* 'Trending' title */
     grid-row: 2;
     grid-column: 3;
     align-self: center;
+    color: white;
 }
 
 .trending {
     grid-row: 3 / 4;
     grid-column: 3;
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 8px;
+    box-shadow: 0px -5px 0px 0px var(--bg-color);
 }
 
 .trending > ul {
@@ -212,4 +255,12 @@ hr {
 
 .trending > ul > p {
     opacity: 0.5;
+}
+
+img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    border: 2px solid var(--bg-color);
+    filter: drop-shadow(0 0 8px var(--bg-color));
 }
