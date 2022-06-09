@@ -1,5 +1,9 @@
 :root {
-    --bg-color: #e11d48; 
+    --bg-color: #6B5CA5; 
+    --header-button: #B8B8FF;
+    --content-color: #F8F7FF;
+    --project-color: #B8B8FF;
+    --project-font: #6B5CA5;
 }
 
 * {
@@ -10,6 +14,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    width: 100vw;
 }
 
 #container {
@@ -21,7 +27,7 @@ body {
 }
 
 #header {
-    background-color: black;
+    background-color: var(--header-button);
     color: white;
     grid-area: 1 / 2 / 1 / 6;
     display: grid;
@@ -99,8 +105,9 @@ body {
 
 .bottom-right > button:hover {
     color: var(--bg-color);
-    background-color: white;
+    background-color: var(--header-button);
     transition: 0.3s;
+    border: 2px solid var(--bg-color);
 }
 
 #sidebar {
@@ -145,7 +152,7 @@ body {
 }
 
 #content {
-    background-color: white;
+    background-color: var(--content-color);
     grid-row: 2 / span 5;
     grid-column: 2 / span 5;
     display: grid;
@@ -158,7 +165,7 @@ body {
 
 #content > h3{
     align-self: flex-end;
-    color: black;
+    color: var(--project-color);
 }
 
 #content > h3:nth-child(4) {
@@ -174,18 +181,19 @@ body {
 }
 
 [class^="project"] {            /* Ensures every class with the name'project' will have these styles */
-    background-color: black;
-    color: white;
+    background-color: var(--project-color);
+    color: var(--project-font);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     padding: 3vh 2vw 0 2vw;
-    box-shadow: -5px 0px 0px 0px var(--bg-color);
+    box-shadow: -5px 0px 0px 0px var(--project-font);
     transition: all .2s ease-in-out;
 }
 
 [class^="project"]:hover {
     transform: scale(1.05);
+    box-shadow: -5px 5px 10px 0px var(--project-font)
 }
 
 [class^="project"] > ul > li{
@@ -193,8 +201,8 @@ body {
 }
 
 [class^="project"] > ul > li:hover {
-    color: var(--bg-color);
-    transition: 0.5s;
+    color: var(--content-color);
+    transition: 0.2s;
 }
 
 .project-1 {
@@ -230,8 +238,8 @@ body {
 }
 
 .announcements {
-    background-color: black;
-    color: white;
+    background-color: var(--project-color);
+    color: var(--project-font);
     border-radius: 8px;
     grid-row: 1 /  span 1 ;
     grid-column: 3 /  3;
@@ -239,7 +247,7 @@ body {
     overflow: auto;
     text-align: start;
     font-size: 0.75rem;
-    box-shadow: 0px -5px 0px 0px var(--bg-color);
+    box-shadow: 0px -5px 0px 0px var(--project-font);
 }
 
 hr {
@@ -250,16 +258,16 @@ hr {
     grid-row: 2;
     grid-column: 3;
     align-self: center;
-    color: white;
+    color: var(--project-color);
 }
 
 .trending {
     grid-row: 3 / 4;
     grid-column: 3;
-    background-color: black;
-    color: white;
+    background-color: var(--project-color);
+    color: var(--project-font);
     border-radius: 8px;
-    box-shadow: 0px -5px 0px 0px var(--bg-color);
+    box-shadow: 0px -5px 0px 0px var(--project-font);
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: repeat(4, 1fr);
@@ -274,6 +282,5 @@ img {
     width: 3rem;
     height: 3rem;
     border-radius: 100%;
-    border: 2px solid var(--bg-color);
-    filter: drop-shadow(0 0 8px var(--bg-color));
+    border: 2px solid var(--content-color);
 }
